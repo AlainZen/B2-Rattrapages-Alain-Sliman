@@ -22,7 +22,7 @@ class DashboardController extends AbstractController
         // Compter le nombre d'employés inactifs
         $inactiveEmployeeCount = count($employeeRepository->findBy(['active' => false]));
         
-        // Récup tous les resto avec leurs employés pour les stat
+        // Récup tous les resto avec leurs employés pour les stats
         $restaurants = $restaurantRepository->findAll();
         
         $restaurantStats = [];
@@ -39,6 +39,7 @@ class DashboardController extends AbstractController
             }
             
             $restaurantStats[] = [
+                'id' => $restaurant->getId(), // Correction pour le twig
                 'name' => $restaurant->getName(),
                 'activeEmployees' => $activeEmployees,
                 'inactiveEmployees' => $inactiveEmployees,
