@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des employés{% endblock %}
+
+{% block body %}
+<h1>Liste des employés</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Restaurant</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.restaurant.name }}</td>
+                <td>
+                    <a href="{{ path('app_employee_show', {'id': employee.id}) }}" class="btn btn-info btn-sm">Voir</a>
+                    <a href="{{ path('app_employee_edit', {'id': employee.id}) }}" class="btn btn-primary btn-sm">Modifier</a>
+                    <form method="post" action="{{ path('app_employee_delete', {'id': employee.id}) }}" style="display:inline-block;" onsubmit="return confirm('Voulez-vous vraiment supprimer cet employé ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ employee.id) }}">
+                        <button class="btn btn-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr><td colspan="5">Aucun employé trouvé.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ path('app_employee_new') }}" class="btn btn-success mt-3">Ajouter un employé</a>
+{% endblock %}

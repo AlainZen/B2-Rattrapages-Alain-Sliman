@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le restaurant - Mongoo{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2"><i class="fas fa-edit me-2"></i>Modifier le restaurant</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+                <a href="{{ path('app_restaurant_show', {'id': restaurant.id}) }}" class="btn btn-sm btn-secondary">
+                    <i class="fas fa-eye me-1"></i> Voir le restaurant
+                </a>
+                <a href="{{ path('app_restaurant_index') }}" class="btn btn-sm btn-secondary">
+                    <i class="fas fa-arrow-left me-1"></i> Retour à la liste
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    {{ include('restaurant/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="card-title mb-0"><i class="fas fa-trash-alt me-1"></i> Supprimer ce restaurant</h5>
+                </div>
+                <div class="card-body">
+                    <p>Attention, cette action est irréversible.</p>
+                    {{ include('restaurant/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
