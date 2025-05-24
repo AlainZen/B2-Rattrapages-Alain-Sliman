@@ -13,7 +13,7 @@ Il s'agit d'une plateforme développée avec Symfony, permettant de gérer des r
 - 🔐 Security Bundle – Gestion des utilisateurs et de l'authentification
 
 ## 🎥 Voir la vidéo explicative
-Une vidéo explicative sera bientôt disponible. Restez à l'affût !
+https://youtu.be/6hWmRXCSbXE  Vidéo en non-répertoriée
 
 ## 📦 Installation & Exécution
 Si vous souhaitez exécuter ce projet en local, voici les étapes :
